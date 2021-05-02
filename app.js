@@ -291,7 +291,7 @@ app.post('/searchUser', async (req, res)=>{
     res.render('users', {model:results});
 })
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT);
 console.log('Node server is running on port ' + PORT);
