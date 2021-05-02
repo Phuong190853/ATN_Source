@@ -1,7 +1,6 @@
 {
   "name": "atn_source",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -14,6 +13,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "start":"node app.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phuong190853/ATN_Source.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Phuong190853/ATN_Source/issues"
+  },
+  "homepage": "https://github.com/Phuong190853/ATN_Source#readme",
+  "description": ""
 }
