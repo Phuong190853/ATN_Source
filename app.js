@@ -24,6 +24,20 @@ var bodyParse = require("body-parser");
 app.use(bodyParse.urlencoded({extended: false}))
 
 //--------------------------------------
+//session login check
+app.get('/', async(req,res)=>{
+    let client = await MongoClient.connect(url);
+    let dbo = client.db("ATNDemo");
+    
+    let results = await dbo.collection("product").find({}).toArray();
+
+    var user = req.session.User;
+    if(!user  || user.username == ''){
+        res.render('login')
+    }else{
+        res.render('index', {model:results});
+    }
+})
 app.get('/login',(req,res)=>{
     res.render('login')
 })
@@ -59,20 +73,7 @@ app.post('/doLogin',async (req,res)=>{
         res.redirect('/')
     }    
 })
-//session login check
-app.get('/', async(req,res)=>{
-    let client = await MongoClient.connect(url);
-    let dbo = client.db("ATNDemo");
-    
-    let results = await dbo.collection("product").find({}).toArray();
 
-    var user = req.session.User;
-    if(!user  || user.username == ''){
-        res.render('login')
-    }else{
-        res.render('home', {model:results});
-    }
-})
 app.get('/signOut',(req,res)=>{
     req.session.destroy(function (err) {
       res.redirect('/'); 
@@ -80,12 +81,12 @@ app.get('/signOut',(req,res)=>{
 })
 
 //----------------------------
-app.get('/home', async(req,res)=>{
+app.get('/index', async(req,res)=>{
     let client = await MongoClient.connect(url);
     let dbo = client.db("ATNDemo");
     
     let results = await dbo.collection("product").find({}).toArray();
-    res.render('home', {model:results});
+    res.render('index', {model:results});
     
 })
 
