@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body{
+	background-color: #FF4040;
+}
+center{
+	margin-top:8%;
+}
+h1{
+	color: white;
+}
+.form{
+	width: 25%;
+	height: 270px;
+	padding:20px;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 #5b5656, 0 6px 20px 0 #5b5656;
+}
+input{
+	width: 80%;
+	height:50px;
+	margin-top: 8%;
+	border-radius: 40px ;
+	border:1px solid #FF4040;
+	text-align: center;
+	margin-left: 10px;
+}
+img{
+	width: 10%;
+	margin: 0 0 -4% -5%;
+}
+#login{
+	background-color: #FF4040;
+	border: 2px solid #FF4040;
+	width: 20%;
+	color: white;
+	font-weight: bold;
+    cursor: pointer;
+}
+#login:hover{
+	background-color: white;
+	color: #FF4040;
+}
+</style>
+</head>
+<body>
+<center>
+	<h1>ATN Admin login</h1>
+	<form method="POST" action="/doLogin">
+		<div class="form">
+			<img src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png" alt=""><input type="text" placeholder="Username" name="username" required>
+			<br>
+			<img src="https://www.pngkit.com/png/full/203-2037815_icons-tagged-as-change-password-icon-png.png" alt=""><input type="password" placeholder="Password" name="password" required>
+			<br>
+			<span style="color: red;">{{message}}</span>
+			<input id="login" type="submit" value="LOGIN" name="login">
+		</div>
+	</form>
+</center>
+</body>
+</html>

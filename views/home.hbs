@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.main{
+    margin-left: 310px; 
+    padding: 0px 10px;
+    float: left;
+}
+.page{
+    margin-top:100px;
+    font-size: 22px;
+}
+.page span{
+    color: grey;
+}
+.product-content ul{
+	list-style: none;
+}
+.product-content ul li{
+	display: inline-block;
+	width: 220px;
+	margin-right: 50px;
+    margin-top: 30px;
+	text-align: center;
+    border: 1px solid #ebebf0;
+    background-color: white;
+}
+.img-hover-zoom{
+	overflow: hidden;
+	height: 220px;
+	width:220px;
+}
+.product-content li:hover img{
+	transform: scale(1.1);
+	opacity: 0.8;
+}
+.product-content li:hover{
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.product-content li img{
+	width:220px;
+	transition: transform .6s ease;
+}
+
+.price{
+	font-family:Helvetica;
+}
+</style>
+</head>
+<body>
+    {{>layout}}
+    <div class="main">
+        <div class="page"><span><b>ATN</b>Shop</span> / Homepage</div>
+        <div class="product-content">
+            <ul>
+                {{# each model}}
+                <li>
+                    <div>
+                        <div class="img-hover-zoom">
+                            <img src="{{image}}">
+                        </div>
+                        <p>{{name}}</p>
+                    </div>
+                    <p class="price">{{price}}VND</p>
+                </li>
+                
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
