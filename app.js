@@ -64,11 +64,11 @@ app.post('/doLogin',async (req,res)=>{
         let password='';
         await cursor.forEach(doc=>{      
             name = doc.name; 
-            password= doc.password;         
+            
         })
         req.session.User = {
             name : name,
-            password :password
+            
         }
         res.redirect('/')
     }    
