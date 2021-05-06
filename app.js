@@ -61,14 +61,11 @@ app.post('/doLogin',async (req,res)=>{
         res.render('login',{message: 'Invalid user!'})
     }else{
         let name ='';
-        let password='';
         await cursor.forEach(doc=>{      
             name = doc.name; 
-            
         })
         req.session.User = {
-            name : name,
-            
+            name : name, 
         }
         res.redirect('/')
     }    
@@ -111,11 +108,16 @@ app.post('/doAddProduct', async(req, res)=>{
     var imageInput = req.body.image;
     var newProduct = {product_id: idInput, name: nameInput, price: priceInput, 
                         quantity: quantityInput, description: descriptionInput, image:imageInput};
-
-    let client = await MongoClient.connect(url);
+    var count = nameInput.count();
+    if(count <= 3){
+        res.render('add_product', {message: 'Invalid'});
+    }else{
+        let client = await MongoClient.connect(url);
     let dbo = client.db("ATNDemo");
     await dbo.collection("product").insertOne(newProduct);
     res.redirect('/products');
+    }
+    
 })
 app.get('/deleteProduct', async (req, res)=>{
     let id = req.query.id;
