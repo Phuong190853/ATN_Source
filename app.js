@@ -35,7 +35,7 @@ app.get('/', async(req,res)=>{
     if(!user  || user.username == ''){
         res.render('login')
     }else{
-        res.render('index', {model:results});
+        res.render('home', {model:results});
     }
 })
 app.get('/login',(req,res)=>{
@@ -81,12 +81,12 @@ app.get('/signOut',(req,res)=>{
 })
 
 //----------------------------
-app.get('/index', async(req,res)=>{
+app.get('/home', async(req,res)=>{
     let client = await MongoClient.connect(url);
     let dbo = client.db("ATNDemo");
     
     let results = await dbo.collection("product").find({}).toArray();
-    res.render('index', {model:results});
+    res.render('home', {model:results});
     
 })
 
