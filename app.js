@@ -33,7 +33,7 @@ app.get('/', async(req,res)=>{
 
     var user = req.session.User;
     if(!user  || user.username == ''){
-        res.render('login')
+        res.render('login', )
     }else{
         res.render('home', {model:results});
     }
@@ -83,8 +83,14 @@ app.get('/home', async(req,res)=>{
     let dbo = client.db("ATNDemo");
     
     let results = await dbo.collection("product").find({}).toArray();
-    res.render('home', {model:results});
+    //res.render('home', {model:results});
     
+    var user = req.session.User;
+    if(!user  || user.username == ''){
+        res.render('login', )
+    }else{
+        res.render('home', {model:results});
+    }
 })
 
 //------------------product functions
